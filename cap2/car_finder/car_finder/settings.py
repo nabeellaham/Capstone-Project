@@ -89,3 +89,4 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGOUT_REDIRECT_URL = 'login'
