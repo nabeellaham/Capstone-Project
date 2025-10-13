@@ -35,7 +35,7 @@ A simple web app to browse and list cars for sale. Users can view cars, create a
     
 
 
-          User Stories Implemented
+          User Stories 
  1. Visitor (Unauthenticated User)
       Browse all car listings without logging in
 
