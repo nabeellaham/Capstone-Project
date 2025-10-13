@@ -35,3 +35,30 @@ A simple web app to browse and list cars for sale. Users can view cars, create a
     
 
 
+          User Stories Implemented
+ 1. Visitor (Unauthenticated User)
+      Browse all car listings without logging in
+
+       View car details and images
+      
+       Search and filter cars
+
+       Access public homepage
+
+ 2. Authenticated User
+       Register and login to the system
+
+       Create new car listings
+
+       Edit and delete own listings
+
+       Mark cars as sold/available
+
+       Personal dashboard ("My Cars")
+
+ 3. Administrator
+       Full backend management via Django Admin
+
+       Manage all user listings
+
+       User management capabilities
