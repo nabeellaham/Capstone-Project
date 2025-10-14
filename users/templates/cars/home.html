@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Filter Cars</h5>
+            </div>
+            <div class="card-body">
+                <form method="get">
+                    <div class="mb-3">
+                        <label class="form-label">Brand</label>
+                        <input type="text" name="brand" class="form-control" value="{{ request.GET.brand }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Model</label>
+                        <input type="text" name="model" class="form-control" value="{{ request.GET.model }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Car Type</label>
+                        <select name="car_type" class="form-select">
+                            <option value="">All Types</option>
+                            {% for type_id, type_name in car_types %}
+                                <option value="{{ type_id }}" {% if request.GET.car_type == type_id %}selected{% endif %}>
+                                    {{ type_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Min Price</label>
+                            <input type="number" name="min_price" class="form-control" value="{{ request.GET.min_price }}">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Max Price</label>
+                            <input type="number" name="max_price" class="form-control" value="{{ request.GET.max_price }}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100 mt-2">Clear</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+            {% for car in cars %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card car-card">
+                    {% if car.is_sold %}
+                    <span class="badge bg-danger sold-badge">SOLD</span>
+                    {% endif %}
+                    <img src="{{ car.image.url }}" class="card-img-top car-image" alt="{{ car.brand }} {{ car.model }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.year }} {{ car.brand }} {{ car.model }}</h5>
+                        <p class="card-text">
+                            <strong>${{ car.price }}</strong><br>
+                            <small class="text-muted">{{ car.car_type }}</small>
+                        </p>
+                        <p class="card-text">{{ car.description|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'car-detail' car.pk %}" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    No cars found matching your criteria.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

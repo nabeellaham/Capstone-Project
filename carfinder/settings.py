@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     # A framework to manage static files.
     "django.contrib.staticfiles",
 
-    'cars',
+    'main_app',
     'users',
 ]
 
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'car_finder.urls'
+ROOT_URLCONF = 'carfinder.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "car_finder.wsgi.application"
+WSGI_APPLICATION = "carfinder.wsgi.application"
 
 
 # Database

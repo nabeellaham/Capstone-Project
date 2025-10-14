@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2>Delete Car Listing</h2>
+            </div>
+            <div class="card-body text-center">
+                <p>Are you sure you want to delete this car listing?</p>
+                <h4>{{ car.year }} {{ car.brand }} {{ car.model }}</h4>
+                <img src="{{ car.image.url }}" class="img-fluid rounded mt-3 mb-3" style="max-height: 200px;" alt="{{ car.brand }} {{ car.model }}">
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <a href="{% url 'my-listings' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

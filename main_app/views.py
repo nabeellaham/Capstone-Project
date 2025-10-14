@@ -29,7 +29,7 @@ def home(request):
         'cars': cars,
         'car_types': Car.CAR_TYPES,
     }
-    return render(request, 'cars/home.html', {})
+    return render(request, 'cars/home.html', context)
 
 def car_detail(request, pk):
     car = get_object_or_404(Car, pk=pk)
