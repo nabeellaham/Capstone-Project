@@ -1,33 +1,69 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h2>{{ title }} Listing</h2>
-            </div>
-            <div class="card-body">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    
-                    {% for field in form %}
-                    <div class="mb-3">
-                        <label class="form-label">{{ field.label }}</label>
-                        {{ field }}
-                        {% if field.errors %}
-                        <div class="text-danger">
-                            {{ field.errors }}
+<div class="container py-5">
+    <div class="row justify-content-center fade-in">
+        <div class="col-lg-8 col-xl-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-primary text-white py-4">
+                    <h2 class="text-center mb-0">
+                        <i class="fas fa-car me-2"></i>{{ title }} Listing
+                    </h2>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            {% for field in form %}
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold text-primary">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                <div class="text-danger small mt-2">
+                                    <i class="fas fa-exclamation-circle me-1"></i>{{ field.errors.0 }}
+                                </div>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <div class="form-text text-muted">{{ field.help_text }}</div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                    
-                    <button type="submit" class="btn btn-primary">Save Car</button>
-                    <a href="{% url 'my-listings' %}" class="btn btn-secondary">Cancel</a>
-                </form>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a href="{% url 'my-listings' %}" class="btn btn-outline-secondary me-md-2 px-4">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-2"></i>Save Car
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.3rem rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+}
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+</style>
 {% endblock %}

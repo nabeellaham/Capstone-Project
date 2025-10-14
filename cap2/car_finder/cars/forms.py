@@ -7,5 +7,5 @@ class CarForm(forms.ModelForm):
         fields = ['brand', 'model', 'year', 'car_type', 'price', 'description', 'image', 'is_sold']
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
-            'year': forms.NumberInput(attrs={'min': 1900, 'max': 2024}),
+            'year': forms.NumberInput(attrs={'min': 1900, 'max': 2026}),
         }

@@ -1,30 +1,111 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-6">
-        <img src="{{ car.image.url }}" class="img-fluid rounded" alt="{{ car.brand }} {{ car.model }}">
-    </div>
-    <div class="col-md-6">
-        <h1>{{ car.year }} {{ car.brand }} {{ car.model }}</h1>
-        {% if car.is_sold %}
-        <span class="badge bg-danger fs-6 mb-3">SOLD</span>
-        {% endif %}
-        <p class="fs-4 text-primary"><strong>${{ car.price }}</strong></p>
-        <p><strong>Type:</strong> {{ car.car_type }}</p>
-        <p><strong>Year:</strong> {{ car.year }}</p>
-        <p><strong>Listed by:</strong> {{ car.user.username }}</p>
-        <p><strong>Description:</strong></p>
-        <p>{{ car.description }}</p>
-        
-        {% if user == car.user %}
-        <div class="mt-4">
-            <a href="{% url 'edit-car' car.pk %}" class="btn btn-warning">Edit Listing</a>
-            <a href="{% url 'delete-car' car.pk %}" class="btn btn-danger">Delete Listing</a>
+<div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4 fade-in">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-primary">Home</a></li>
+            <li class="breadcrumb-item active text-dark">{{ car.brand }} {{ car.model }}</li>
+        </ol>
+    </nav>
+
+    <div class="row fade-in">
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="position-relative">
+                    <img src="{{ car.image.url }}" class="card-img-top rounded-top" 
+                         alt="{{ car.brand }} {{ car.model }}" style="height: 450px; object-fit: cover;">
+                    {% if car.is_sold %}
+                    <div class="position-absolute top-0 end-0 m-4">
+                        <span class="sold-badge fs-6">
+                            <i class="fas fa-tag me-1"></i>SOLD
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="position-absolute bottom-0 start-0 m-4">
+                        <span class="type-badge fs-6">{{ car.car_type }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% endif %}
         
-        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back to Listings</a>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="card-body p-5">
+                    <h1 class="card-title display-5 fw-bold text-dark mb-3">
+                        {{ car.year }} {{ car.brand }} {{ car.model }}
+                    </h1>
+                    
+                    <div class="price-tag display-4 fw-bold my-4">${{ car.price }}</div>
+                    
+                    <div class="car-details mb-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt text-primary fs-5 me-3"></i>
+                                    <div>
+                                        <strong class="d-block text-muted">Year</strong>
+                                        <span class="fs-6 fw-bold">{{ car.year }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-car text-primary fs-5 me-3"></i>
+                                    <div>
+                                        <strong class="d-block text-muted">Type</strong>
+                                        <span class="fs-6 fw-bold">{{ car.car_type }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-user text-primary fs-5 me-3"></i>
+                                    <div>
+                                        <strong class="d-block text-muted">Seller</strong>
+                                        <span class="fs-6 fw-bold">{{ car.user.username }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-clock text-primary fs-5 me-3"></i>
+                                    <div>
+                                        <strong class="d-block text-muted">Listed</strong>
+                                        <span class="fs-6 fw-bold">{{ car.created_at|date:"M d, Y" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="description-section mb-5">
+                        <h5 class="fw-bold text-dark mb-3">Vehicle Description</h5>
+                        <p class="text-dark lead">{{ car.description }}</p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        {% if user == car.user %}
+                        <div class="d-grid gap-3">
+                            <div class="btn-group">
+                                <a href="{% url 'edit-car' car.pk %}" class="btn btn-warning btn-lg">
+                                    <i class="fas fa-edit me-2"></i>Edit Listing
+                                </a>
+                                <a href="{% url 'delete-car' car.pk %}" class="btn btn-danger btn-lg">
+                                    <i class="fas fa-trash me-2"></i>Delete
+                                </a>
+                            </div>
+                        </div>
+                
+                        {% endif %}
+                        
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Listings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
