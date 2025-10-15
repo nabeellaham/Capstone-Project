@@ -81,4 +81,30 @@ I can see website statistics and activity
 
 
 erd for the car finder
+
 <img width="733" height="420" alt="erd_car_finder" src="https://github.com/user-attachments/assets/9bbcca47-a5ba-44c9-9cd6-42ff6d258daf" />
+
+
+
+
+Quick Installation
+     1.Prerequisites
+
+Python 3.8 or higher
+
+pip package manager
+ 
+git or Windows PowerShell
+
+
+Step 1: Clone the Repository
+ #open git bash 
+run this ==> git clone https://github.com/nabeellaham/Capstone-Project.git
+Step 2: run this commands
+and this ==> pipenv shell
+and this ==> pipenv install
+and this ==> python manage.py makemigrations
+and this ==> python manage.py migrate
+and this ==> python manage.py runserver
+and this ==> pipenv install django
+and this ==> pipenv install psycopg2-binary
