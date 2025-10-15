@@ -34,5 +34,47 @@ A simple web app to browse and list cars for sale. Users can view cars, create a
     SQLite - Database (for development)
     
 
+       
+      Basic User Stories
 
+         1.As a Site Visitor
+
+I can see car photos, prices, and basic details on the main page
+
+I can use search to find cars by brand or model
+
+I can filter cars by price and type
+
+I can view detailed information when I click on a car
          
+        2.As a Registered User
+I can create an account with email and password
+
+I can log in to my account securely
+
+I can add my own car listings with photos and details
+
+I can edit my car listings if I make a mistake or need to update
+
+I can delete my car listings when they sell
+
+I can mark my cars as "sold" when they're no longer available
+
+I can see all my listings in one place
+
+        3.Advanced Features
+For Better Searching
+I can filter by car year, Model, and Brand
+
+I can sort cars py price
+
+        4.As an Administrator
+I can manage all user accounts
+
+I can remove inappropriate listings
+
+I can verify car information
+
+I can help users with problems
+
+I can see website statistics and activity
