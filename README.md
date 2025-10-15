@@ -88,7 +88,7 @@ erd for the car finder
 
 
 Quick Installation
-     1.Prerequisites
+     Prerequisites
 
 Python 3.8 or higher
 
