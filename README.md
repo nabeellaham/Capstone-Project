@@ -98,13 +98,15 @@ git or Windows PowerShell
 
 
 Step 1: Clone the Repository
- #open git bash 
-run this ==> git clone https://github.com/nabeellaham/Capstone-Project.git
-Step 2: run this commands
-and this ==> pipenv shell
-and this ==> pipenv install
-and this ==> python manage.py makemigrations
-and this ==> python manage.py migrate
-and this ==> python manage.py runserver
-and this ==> pipenv install django
-and this ==> pipenv install psycopg2-binary
+ #open git bash py Left mouse click and click on open git bash here
+run this     ==> git clone https://github.com/nabeellaham/Capstone-Project.git
+and run this ==> cd Capstone-Project
+Step 2: run this commands 1 py 1
+ 1.==> pipenv shell
+ 2.==> pipenv install
+ 3.==> python manage.py makemigrations
+ 4.==> python manage.py migrate
+ 5.==> pipenv install django
+ 6.==> pipenv install psycopg2-binary
+ 7.==> python manage.py runserver
+step 3 : open the website  http://127.0.0.1:8000/
