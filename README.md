@@ -78,3 +78,5 @@ I can verify car information
 I can help users with problems
 
 I can see website statistics and activity
+erd for the car finder
+<img width="733" height="420" alt="erd_car_finder" src="https://github.com/user-attachments/assets/9bbcca47-a5ba-44c9-9cd6-42ff6d258daf" />
