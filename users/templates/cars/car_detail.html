@@ -19,8 +19,8 @@
         
         {% if user == car.user %}
         <div class="mt-4">
-            <a href="{% url 'edit-car' car.pk %}" class="btn btn-secondary mt-3">Edit Listing</a>
-            <a href="{% url 'delete-car' car.pk %}" class="btn btn-secondary mt-3">Delete Listing</a>
+            <a href="{% url 'edit-car' car.pk %}" >Edit Listing</a>
+            <a href="{% url 'delete-car' car.pk %}" >Delete Listing</a>
         </div>
         {% endif %}
         
